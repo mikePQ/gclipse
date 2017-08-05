@@ -1,0 +1,46 @@
+group 'io.github'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+    maven {
+        url gradleRemoteRepositoryUrl
+    }
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'nu.studer:java-ordered-properties:1.0.1'
+    compile 'org.apache.maven:maven-ant-tasks:2.1.3'
+    compile 'bcel:bcel:5.1'
+    testCompile gradleTestKit()
+}
+
+sourceSets {
+    main {
+        groovy {
+            // this makes the groovy-compiler compile groovy- as well
+            // as java-files.
+            // Needed, because java is normally compiled before groovy.
+            // Since we are using groovy objects from java, we need it
+            // the other way round.
+            srcDirs = ['src/main/groovy', 'src/main/java']
+        }
+        java {
+            srcDirs = [] // don't compile Java code twice
+        }
+    }
+}
+
+jar {
+    into('lib') {
+        from 'libs'
+    }
+}

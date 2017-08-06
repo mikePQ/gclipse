@@ -5,5 +5,6 @@
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/13399/badge.svg"/>
 </a>
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/70b2008b7d164cf7936e13635f73d502)](https://www.codacy.com/app/michalperlak/gclipse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michalperlak/gclipse&amp;utm_campaign=Badge_Grade)
 
 # gclipse

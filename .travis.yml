@@ -19,3 +19,4 @@ addons:
       name: "michalperlak/gclipse"
     build_command_prepend: "./gradlew clean"
     build_command:   "./gradlew test"
+    branch_pattern: coverity_scan

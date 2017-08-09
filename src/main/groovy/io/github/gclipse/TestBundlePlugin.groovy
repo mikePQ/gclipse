@@ -150,14 +150,14 @@ class TestBundlePlugin implements Plugin<Project> {
 
         // copy the target platform to the test distribution folder
         project.logger.info("Copy target platform from '${config.nonMavenizedTargetPlatformDir.absolutePath}' into the build folder '${testDistributionDir.absolutePath}'")
-        copyTargetPlatformToBuildFolder(project, config, testDistributionDir)
+        DependenciesUtil.copyTargetPlatformToBuildFolder(project, config, testDistributionDir)
 
         // publish the dependencies' output jars into a P2 repository in the additions folder
         project.logger.info("Create mini-update site from the test plug-in and its dependencies at '${additionalPluginsDir.absolutePath}'")
-        publishDependenciesIntoTemporaryRepo(project, config, additionalPluginsDir)
+        DependenciesUtil.publishDependenciesIntoTemporaryRepo(project, config, additionalPluginsDir)
 
         // install all elements from the P2 repository into the test Eclipse distribution
         project.logger.info("Install the test plug-in and its dependencies from '${additionalPluginsDir.absolutePath}' into '${testDistributionDir.absolutePath}'")
-        installDepedenciesIntoTargetPlatform(project, config, additionalPluginsDir, testDistributionDir)
+        DependenciesUtil.installDepedenciesIntoTargetPlatform(project, config, additionalPluginsDir, testDistributionDir)
     }
 }
